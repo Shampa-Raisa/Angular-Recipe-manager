@@ -1,0 +1,8 @@
+<div class="recipe-list">
+  <h3>Recipe List</h3>
+  <ul>
+    <li *ngFor="let recipe of recipes">
+      <app-recipe-item [recipe]="recipe"></app-recipe-item>
+    </li>
+  </ul>
+</div>
