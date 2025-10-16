@@ -1,5 +1,5 @@
 .recipe-list {
-  background: #f3e5f5;
-  padding: 1rem;
-  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr; /* এক কলাম */
+  row-gap: 16px; /* প্রতিটি row-এর মধ্যে ১৬ পিক্সেল gap */
 }

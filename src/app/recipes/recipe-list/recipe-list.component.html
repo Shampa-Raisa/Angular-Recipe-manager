@@ -1,8 +1,5 @@
-<div class="recipe-list">
-  <h3>Recipe List</h3>
-  <ul>
-    <li *ngFor="let recipe of recipes">
-      <app-recipe-item [recipe]="recipe"></app-recipe-item>
-    </li>
-  </ul>
-</div>
+<section class="recipe-list">
+  <div class="card" *ngFor="let r of recipes" (click)="onSelect(r)">
+    <app-recipe-item [recipe]="r"></app-recipe-item>
+  </div>
+</section>

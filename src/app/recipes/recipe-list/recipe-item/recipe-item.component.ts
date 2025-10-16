@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -7,5 +8,13 @@ import { Recipe } from '../../recipe.model';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent {
-  @Input() recipe: Recipe | undefined;
+  @Input() recipe!: Recipe;
+
+  constructor(private router: Router) {}
+
+  openDetail() {
+    // তুমি চাইলে detail রাউট করতে পারো; এখন simple action:
+    alert(this.recipe.name);
+    // অথবা router.navigate(['/recipes', this.recipe.id]);
+  }
 }

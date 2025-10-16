@@ -1,5 +1,27 @@
 <div class="recipe-book">
   <h2>Recipe Book</h2>
-  <app-recipe-list></app-recipe-list>
-  <app-recipe-detail></app-recipe-detail>
+  <button (click)="toggleForm()" class="new-recipe-btn">New Recipe</button>
+
+  <div *ngIf="showForm" class="new-recipe-form">
+    <input [(ngModel)]="newRecipe.name" placeholder="Recipe Name" />
+    <input [(ngModel)]="newRecipe.description" placeholder="Description" />
+    <input [(ngModel)]="newRecipe.imagePath" placeholder="Image URL (optional)" />
+    <div>
+      <label>Add Ingredient:</label>
+      <input #ingName placeholder="Name" />
+      <input #ingAmount type="number" placeholder="Amount" />
+  <button (click)="addIngredientToNewRecipe(ingName.value, ingAmount.valueAsNumber); ingName.value=''; ingAmount.value=''">Add Ingredient</button>
+    </div>
+    <ul>
+      <li *ngFor="let ing of newRecipe.ingredients; let i = index">
+        {{ing.name}} ({{ing.amount}})
+        <button (click)="removeIngredientFromNewRecipe(i)">Remove</button>
+      </li>
+    </ul>
+    <button (click)="addNewRecipe()">Save Recipe</button>
+    <button (click)="toggleForm()">Cancel</button>
+  </div>
+
+  <app-recipe-list (recipeSelected)="onRecipeSelected($event)"></app-recipe-list>
+  <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
 </div>

@@ -1,6 +1,18 @@
-<nav>
-  <div class="navbar">
-    <a href="#" class="navbar-brand">Recipe Book</a>
-    <!-- Add navigation links here -->
+<nav class="app-header" role="navigation" aria-label="Main navigation">
+  <!-- logo as an actual image element (recommended for accessibility) -->
+  <img
+    src="https://i.ytimg.com/vi/Wsza_3iiwYM/maxresdefault.jpg"
+    alt="My Recipe App logo"
+    class="logo"
+    width="100"
+    height="100"
+    loading="eager"
+    decoding="async"
+  />
+
+  <div class="nav-actions">
+    <a routerLink="/" routerLinkActive="active" aria-current="page">Home</a>
+    <a routerLink="/recipes" routerLinkActive="active">Recipes</a>
+    <a routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
   </div>
 </nav>

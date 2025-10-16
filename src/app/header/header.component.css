@@ -1,9 +1,29 @@
-.navbar {
-  background-color: #ff9800;
-  padding: 1rem;
-  color: #fff;
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
 }
-.navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
+
+.logo{
+  display:block;               
+  width:100px;                  
+  height:100px;
+  border-radius:100%;            
+  object-fit:cover;             
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.nav-actions a{
+  margin-left:16px;
+  text-decoration:none;
+  font-weight:600;
+  color:#374151;
+}
+.nav-actions a.active,
+.nav-actions a:hover{
+  color:#0ea5a4;
+  outline: none;
 }

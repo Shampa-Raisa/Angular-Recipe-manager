@@ -1,5 +1,10 @@
-<div class="shopping-list-edit">
-  <input type="text" placeholder="Ingredient name">
-  <input type="number" placeholder="Amount">
-  <button>Add</button>
-</div>
+<h1>Shopping List</h1>
+<p>Here you can add the list which you want to buy...</p>
+<div class="d-flex align-items-center gap-2 mb-3">
+<form (ngSubmit)="onAdd(f)" #f="ngForm" class="add-form" aria-label="Add ingredient">
+  <div class="input-row">
+    <input name="name" ngModel required placeholder="Ingredient name" />
+    <input name="amount" ngModel required placeholder="Amount (e.g. 2 pcs / 200g)" />
+    <button type="submit" [disabled]="f.invalid">Add</button>
+  </div>
+</form>

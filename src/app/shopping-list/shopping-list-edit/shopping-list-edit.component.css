@@ -1,5 +1,22 @@
-.shopping-list-edit {
-  margin-top: 1rem;
+.input-row {
   display: flex;
-  gap: 0.5rem;
+  gap: 24px;
+  align-items: center;
+}
+.edit-form {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* Adds a 32px gap between elements */
+  padding: 10px;
+}
+
+input {
+  padding: 5px;
+  margin: 0; /* Reset any default margins */
+}
+
+button {
+  padding: 5px 10px;
+  margin: 0; /* Reset any default margins */
+  cursor: pointer;
 }
