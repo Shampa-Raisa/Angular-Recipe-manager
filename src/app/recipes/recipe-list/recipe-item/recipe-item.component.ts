@@ -13,8 +13,7 @@ export class RecipeItemComponent {
   constructor(private router: Router) {}
 
   openDetail() {
-    // তুমি চাইলে detail রাউট করতে পারো; এখন simple action:
     alert(this.recipe.name);
-    // অথবা router.navigate(['/recipes', this.recipe.id]);
+    
   }
 }
