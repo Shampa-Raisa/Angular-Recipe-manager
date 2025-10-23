@@ -25,7 +25,7 @@ export class RecipeService {
   }
 
   addRecipe(recipe: Omit<Recipe, 'id'>) {
-    const newId = this.recipes.length > 0 ? Math.max(...this.recipes.map(r => r.id)) + 1 : 1;
-    this.recipes.push({ ...recipe, id: newId });
+    const NewId = this.recipes.length > 0 ? Math.max(...this.recipes.map(r => r.id)) + 1 : 1;
+    this.recipes.push({ ...recipe, id: NewId });
   }
 }
