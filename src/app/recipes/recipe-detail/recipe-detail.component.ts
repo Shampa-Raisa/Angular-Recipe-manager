@@ -21,7 +21,7 @@ export class RecipeDetailComponent {
   onEditRecipe() {
     console.log('Edit recipe clicked');
     // Example: navigate to edit page if routing setup ache
-    // this.router.navigate(['/recipes', this.recipe?.id, 'edit']);
+    this.router.navigate(['/recipes', this.recipe?.id, 'edit']);
   }
 
   onDeleteRecipe() {

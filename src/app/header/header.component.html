@@ -1,5 +1,4 @@
 <nav class="app-header" role="navigation" aria-label="Main navigation">
-  <!-- logo as an actual image element (recommended for accessibility) -->
   <img
     src="https://img.freepik.com/premium-vector/food-drink-company-logo-template_1286368-96831.jpg"
     alt="My Recipe App logo"
@@ -10,9 +9,33 @@
     decoding="async"
   />
 
-  <div class="nav-actions">
-    <a routerLink="/" routerLinkActive="active" aria-current="page">Home</a>
-    <a routerLink="/recipes" routerLinkActive="active">Recipes</a>
-    <a routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
-  </div>
+  <div class="nav-actions"></div>
+    <!-- exact for "/" and expose the directive to read .isActive -->
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      #homeRla="routerLinkActive"
+      [attr.aria-current]="homeRla.isActive ? 'page' : null"
+    >
+      Home
+    </a>
+
+    <a
+      routerLink="/recipes"
+      routerLinkActive="active"
+      #recipesRla="routerLinkActive"
+      [attr.aria-current]="recipesRla.isActive ? 'page' : null"
+    >
+      Recipes
+    </a>
+
+    <a
+      routerLink="/shopping-list"
+      routerLinkActive="active"
+      #shoppingRla="routerLinkActive"
+      [attr.aria-current]="shoppingRla.isActive ? 'page' : null"
+    >
+      Shopping List
+    </a>
 </nav>

@@ -6,9 +6,9 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
+  //{path: '', redirectTo: '/recipes'},
   { path: '', component: HomeComponent },
   { path: 'recipes', component: RecipeBookComponent },
-  { path: 'recipes/:name', component: RecipeBookComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: '**', component: PageNotFoundComponent } //** eta holo wildcard route
 ];
