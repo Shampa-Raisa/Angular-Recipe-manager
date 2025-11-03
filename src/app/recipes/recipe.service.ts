@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
+  recipeSelected = new Subject<Recipe>();
   private recipes: Recipe[] = [
     {
       id: 1,
@@ -40,4 +43,8 @@ updateRecipe(id: number, updatedRecipe: Recipe) {
     this.recipes[index] = updatedRecipe;
   }
 }
+deleteRecipe(id: number): void {
+    this.recipes = this.recipes.filter(recipe => recipe.id !== id);
+    this.recipesChanged.next(this.recipes.slice());
+  }
 }

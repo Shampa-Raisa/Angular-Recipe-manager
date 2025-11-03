@@ -13,6 +13,7 @@ export class RecipeBookComponent {
   selectedRecipe: any;
   showForm = false;
   newRecipe: Partial<Recipe> = { ingredients: [] };
+  editMode = false;
 
   constructor(private recipeService: RecipeService) {}
 
@@ -22,7 +23,10 @@ export class RecipeBookComponent {
 
   toggleForm() {
     this.showForm = !this.showForm;
-    this.newRecipe = { ingredients: [] };
+    if (!this.showForm) {
+      this.newRecipe = { ingredients: [] };
+      this.editMode = false; // Reset when closing form
+    }
   }
 
   addIngredientToNewRecipe(name: string, amount: number) {
@@ -36,10 +40,25 @@ export class RecipeBookComponent {
   editRecipe() {
     if (this.selectedRecipe) {
       this.newRecipe = { ...this.selectedRecipe };
+      this.editMode = true;
       this.showForm = true;
+    
     }
   }
 
+saveEditedRecipe() {
+  if (this.newRecipe.id) {
+    this.recipeService.updateRecipe(this.newRecipe.id, this.newRecipe as Recipe);
+    this.toggleForm();
+  }
+}
+  onSubmit() {
+    if (this.editMode) {
+      this.saveEditedRecipe();
+    } else {
+      this.addNewRecipe();
+    }
+  }
   addNewRecipe() {
     if (this.newRecipe.name && this.newRecipe.description && this.newRecipe.ingredients && this.newRecipe.ingredients.length > 0) {
       this.recipeService.addRecipe({
@@ -52,11 +71,4 @@ export class RecipeBookComponent {
       this.toggleForm();
     }
   }
-
-saveEditedRecipe() {
-  if (this.newRecipe.id) {
-    this.recipeService.updateRecipe(this.newRecipe.id, this.newRecipe as Recipe);
-    this.toggleForm();
-  }
-}
 }

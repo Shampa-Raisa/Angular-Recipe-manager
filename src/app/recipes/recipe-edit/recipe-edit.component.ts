@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Recipe } from '../recipe.model';  // adjust path if needed
-import { RecipeService } from '../recipe.service';  // optional, if you have one
+import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -9,44 +9,38 @@ import { RecipeService } from '../recipe.service';  // optional, if you have one
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
-  recipe: Recipe = { id: 0, name: '', description: '', imagePath: '', ingredients: [] }; // default empty recipe
-  editMode = false;
+  recipe: Recipe = { id: 0, name: '', description: '', imagePath: '', ingredients: [] };
   id!: number;
+  editMode = false;
 
-  constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService,
-              private router: Router
-            ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private recipeService: RecipeService,
+    private router: Router
+  ) {}
 
- ngOnInit(): void {
+  ngOnInit() {
+    // Detect route parameter changes
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      this.editMode = params['id'] != null;
-
+      this.editMode = params['id'] != null; // If id exists → edit mode true
       if (this.editMode) {
-        // Load existing recipe to edit
         const existingRecipe = this.recipeService.getRecipeById(this.id);
         if (existingRecipe) {
-          // Make a copy so that ngModel works properly
-          this.recipe = { ...existingRecipe } as Recipe;
+          this.recipe = { ...existingRecipe }; // Prefill form
         }
-      } else {
-        // If adding new recipe, clear the form
-        this.recipe = { id: 0, name: '', description: '', imagePath: '', ingredients: [] };
       }
     });
   }
 
   onSubmit() {
     if (this.editMode) {
-      // Update the existing recipe
       this.recipeService.updateRecipe(this.id, this.recipe);
+      console.log('Recipe updated:', this.recipe);
     } else {
-      // Add a new recipe
       this.recipeService.addRecipe(this.recipe);
+      console.log('New recipe added:', this.recipe);
     }
-
-    // Navigate back to recipes list
-    this.router.navigate(['/recipes']);
+    this.router.navigate(['/recipes']); // Go back to recipes list
   }
 }

@@ -6,12 +6,18 @@
     <input [(ngModel)]="newRecipe.name" placeholder="Recipe Name" />
     <input [(ngModel)]="newRecipe.description" placeholder="Description" />
     <input [(ngModel)]="newRecipe.imagePath" placeholder="Image URL (optional)" />
-    <div>
-      <label>Add Ingredient:</label>
-      <input #ingName placeholder="Name" />
-      <input #ingAmount type="number" placeholder="Amount" />
-  <button (click)="addIngredientToNewRecipe(ingName.value, ingAmount.valueAsNumber); ingName.value=''; ingAmount.value=''">Add Ingredient</button>
-    </div>
+<div>
+  <label>Add Ingredient:</label>
+  <input #ingName placeholder="Name" />
+
+  <input #ingAmount type="number" placeholder="Amount" required min="1" step="1" pattern="[0-9]*" />
+
+  <button type="button"
+          (click)="addIngredientToNewRecipe(ingName.value, ingAmount.valueAsNumber); ingName.value=''; ingAmount.value=''">
+    Add Ingredient
+  </button>
+</div>
+>
     <ul>
       <li *ngFor="let ing of newRecipe.ingredients; let i = index">
         {{ing.name}} ({{ing.amount}})
@@ -23,9 +29,6 @@
   </div>
 
   <app-recipe-list (recipeSelected)="onRecipeSelected($event)"></app-recipe-list>
-  <app-recipe-detail
-  [recipe]="selectedRecipe"
-  (edit)="editRecipe()">
-</app-recipe-detail>
-
+  <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+  <router-outlet></router-outlet>
 </div>

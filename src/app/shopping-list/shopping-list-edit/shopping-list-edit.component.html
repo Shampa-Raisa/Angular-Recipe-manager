@@ -5,6 +5,6 @@
   <div class="input-row">
     <input name="name" ngModel required placeholder="Ingredient name" />
     <input name="amount" ngModel required placeholder="Amount (e.g. 2 pcs / 200g)" />
-    <button type="submit" [disabled]="f.invalid">Add</button>
+    <button type="submit" [disabled]="f.invalid"> {{ editMode ? 'Update' : 'Add' }}</button>
   </div>
 </form>

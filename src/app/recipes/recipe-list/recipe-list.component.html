@@ -1,5 +1,7 @@
 <section class="recipe-list">
-  <div class="card" *ngFor="let r of recipes" (click)="onSelect(r)">
-    <app-recipe-item [recipe]="r"></app-recipe-item>
+  <div class="card" *ngFor="let r of recipes">
+    <a [routerLink]="['/recipes', r.id]">
+      <app-recipe-item [recipe]="r"></app-recipe-item>
+    </a>
   </div>
 </section>
