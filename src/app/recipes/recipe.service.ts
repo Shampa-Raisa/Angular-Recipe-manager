@@ -24,8 +24,20 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  addRecipe(recipe: Omit<Recipe, 'id'>) {
-    const NewId = this.recipes.length > 0 ? Math.max(...this.recipes.map(r => r.id)) + 1 : 1;
-    this.recipes.push({ ...recipe, id: NewId });
+  getRecipeById(id: number): Recipe | undefined {
+    return this.recipes.find(r => r.id === id);
   }
+
+addRecipe(recipe: Recipe) {
+  // Assign a new id automatically (simple example)
+  recipe.id = this.recipes.length > 0 ? Math.max(...this.recipes.map(r => r.id)) + 1 : 1;
+  this.recipes.push(recipe);
+}
+
+updateRecipe(id: number, updatedRecipe: Recipe) {
+  const index = this.recipes.findIndex(r => r.id === id);
+  if (index !== -1) {
+    this.recipes[index] = updatedRecipe;
+  }
+}
 }

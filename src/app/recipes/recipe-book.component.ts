@@ -33,10 +33,17 @@ export class RecipeBookComponent {
   removeIngredientFromNewRecipe(index: number) {
     if (this.newRecipe.ingredients) this.newRecipe.ingredients.splice(index, 1);
   }
+  editRecipe() {
+    if (this.selectedRecipe) {
+      this.newRecipe = { ...this.selectedRecipe };
+      this.showForm = true;
+    }
+  }
 
   addNewRecipe() {
     if (this.newRecipe.name && this.newRecipe.description && this.newRecipe.ingredients && this.newRecipe.ingredients.length > 0) {
       this.recipeService.addRecipe({
+        id:this.newRecipe.id!,
         name: this.newRecipe.name!,
         description: this.newRecipe.description!,
         imagePath: this.newRecipe.imagePath || '',
@@ -45,4 +52,11 @@ export class RecipeBookComponent {
       this.toggleForm();
     }
   }
+
+saveEditedRecipe() {
+  if (this.newRecipe.id) {
+    this.recipeService.updateRecipe(this.newRecipe.id, this.newRecipe as Recipe);
+    this.toggleForm();
+  }
+}
 }

@@ -23,5 +23,9 @@
   </div>
 
   <app-recipe-list (recipeSelected)="onRecipeSelected($event)"></app-recipe-list>
-  <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+  <app-recipe-detail
+  [recipe]="selectedRecipe"
+  (edit)="editRecipe()">
+</app-recipe-detail>
+
 </div>
