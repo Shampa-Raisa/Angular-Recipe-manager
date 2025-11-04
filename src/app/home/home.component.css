@@ -5,3 +5,13 @@
   text-decoration:none; background:#06b6d4; color:white; font-weight:600;
 }
 .btn.secondary{ background:#f59e0b; color:#fff; }
+:host {
+  display: block;
+  height: 100vh; /* full screen height */
+  background-image: url('https://img.freepik.com/premium-photo/white-background-surrounded-by-border-various-ingredients-burger_559896-31820.jpg');
+  background-size: cover;
+}
+:host::before {
+  content: "";
+  position: absolute;
+}

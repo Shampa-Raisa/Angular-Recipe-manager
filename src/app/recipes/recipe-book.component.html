@@ -17,7 +17,6 @@
     Add Ingredient
   </button>
 </div>
->
     <ul>
       <li *ngFor="let ing of newRecipe.ingredients; let i = index">
         {{ing.name}} ({{ing.amount}})
@@ -27,8 +26,12 @@
     <button (click)="addNewRecipe()">Save Recipe</button>
     <button (click)="toggleForm()">Cancel</button>
   </div>
-
-  <app-recipe-list (recipeSelected)="onRecipeSelected($event)"></app-recipe-list>
-  <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
-  <router-outlet></router-outlet>
+<div class="recipe-container">
+  <div class="recipe-list-container">
+    <app-recipe-list></app-recipe-list>
+  </div>
+  <div class="recipe-detail-container">
+    <app-recipe-detail></app-recipe-detail>
+    <router-outlet></router-outlet>
+  </div>
 </div>

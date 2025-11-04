@@ -17,9 +17,6 @@ export class RecipeBookComponent {
 
   constructor(private recipeService: RecipeService) {}
 
-  onRecipeSelected(recipe: any) {
-    this.selectedRecipe = recipe;
-  }
 
   toggleForm() {
     this.showForm = !this.showForm;
@@ -27,6 +24,9 @@ export class RecipeBookComponent {
       this.newRecipe = { ingredients: [] };
       this.editMode = false; // Reset when closing form
     }
+  }
+  onRecipeSelected(recipe: any) {
+      this.selectedRecipe = recipe;
   }
 
   addIngredientToNewRecipe(name: string, amount: number) {

@@ -3,4 +3,19 @@
   padding: 1rem;
   border-radius: 8px;
 }
-   
+/* recipe-book.component.css */
+.recipe-container {
+  display: flex;            /* Makes children align horizontally */
+  gap: 20px;                /* Space between list and detail */
+}
+
+.recipe-list-container {
+  flex: 1;                  /* Takes proportional width */
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.recipe-detail-container {
+  flex: 2;                  /* Detail area wider than list */
+  padding-left: 10px;
+}

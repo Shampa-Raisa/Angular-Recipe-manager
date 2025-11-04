@@ -35,6 +35,7 @@ addRecipe(recipe: Recipe) {
   // Assign a new id automatically (simple example)
   recipe.id = this.recipes.length > 0 ? Math.max(...this.recipes.map(r => r.id)) + 1 : 1;
   this.recipes.push(recipe);
+   this.recipesChanged.next(this.recipes);
 }
 
 updateRecipe(id: number, updatedRecipe: Recipe) {
@@ -47,4 +48,13 @@ deleteRecipe(id: number): void {
     this.recipes = this.recipes.filter(recipe => recipe.id !== id);
     this.recipesChanged.next(this.recipes.slice());
   }
+
+  setRecipes(recipes: Recipe[]){
+		this.recipes = recipes
+		this.recipesChanged.next(this.recipes.slice())
+	}
+
+	getRecipes(): Recipe[] {
+		return this.recipes.slice();
+	}
 }
