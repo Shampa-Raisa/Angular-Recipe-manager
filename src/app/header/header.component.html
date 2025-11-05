@@ -8,21 +8,48 @@
     loading="eager"
     decoding="async"
   />
-<nav class="navbar navbar-default">
+
+  <nav class="navbar navbar-default">
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/recipes">Recipes</a></li>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/shopping-list">Shopping List</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-            <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
-          </ul>
+        <!-- Always visible -->
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/">Home</a>
         </li>
+
+        <!-- Show only when logged out -->
+        <ng-container *ngIf="!isAuthenticated">
+          <li routerLinkActive="active">
+            <a routerLink="/authenticate">Authenticate</a>
+          </li>
+        </ng-container>
+
+        <!-- Show only when logged in -->
+        <ng-container *ngIf="isAuthenticated">
+          <li routerLinkActive="active">
+            <a routerLink="/recipes">Recipes</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/shopping-list">Shopping List</a>
+          </li>
+
+          <!-- Manage dropdown -->
+          <li class="dropdown" appDropdown>
+            <a style="cursor: pointer;" class="dropdown-toggle" role="button">
+              Manage <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+              <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
+            </ul>
+          </li>
+
+          <!-- Logout -->
+          <li>
+            <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+          </li>
+        </ng-container>
       </ul>
     </div>
+  </nav>
 </nav>

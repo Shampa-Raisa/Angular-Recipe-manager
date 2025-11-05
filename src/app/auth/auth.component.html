@@ -1,0 +1,20 @@
+<div class="auth-container">
+  <h2>{{ isLoginMode ? 'Login' : 'Register' }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+
+    <button type="submit">{{ isLoginMode ? 'Login' : 'Register' }}</button>
+  </form>
+
+  <p>
+    {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
+    <a href="#" (click)="onSwitchMode(); $event.preventDefault()">
+      {{ isLoginMode ? 'Register here' : 'Login here' }}
+    </a>
+  </p>
+   <p *ngIf="error" style="color: red; margin-top: 10px;">
+    {{ error }}
+  </p> 
+</div>

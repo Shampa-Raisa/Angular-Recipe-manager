@@ -19,8 +19,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
-import { LoginComponent } from './auth/login/login/login.component';
-import { RegisterComponent } from './auth/register/register/register.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { RegisterComponent } from './auth/register/register/register.component';
     PageNotFoundComponent,
     RecipeStartComponent,
     RecipeEditComponent,
-    LoginComponent,
-    RegisterComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
