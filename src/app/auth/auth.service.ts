@@ -32,7 +32,7 @@ export class AuthService {
     if (users.find(u => u.email === email)) {
       throw new Error('This email is already registered');
     }
-    users.push({ email, password }); // storing plain password (demo only)
+    users.push({ email, password }); // storing plain password
     this.saveUsers(users);
     this.user.next({ email });
     this.router.navigate(['/']);

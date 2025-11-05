@@ -42,8 +42,10 @@ updateRecipe(id: number, updatedRecipe: Recipe) {
   const index = this.recipes.findIndex(r => r.id === id);
   if (index !== -1) {
     this.recipes[index] = updatedRecipe;
+    this.recipesChanged.next(this.recipes.slice()); // notify subscribers
   }
 }
+
 deleteRecipe(id: number): void {
     this.recipes = this.recipes.filter(recipe => recipe.id !== id);
     this.recipesChanged.next(this.recipes.slice());

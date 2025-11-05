@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: RecipeBookComponent,
-    canActivate: [AuthGuard], // ✅ only logged-in users can access recipes
+    canActivate: [AuthGuard], 
     children: [
       { path: '', component: RecipeStartComponent },
       { path: 'new', component: RecipeEditComponent },
